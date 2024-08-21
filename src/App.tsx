@@ -9,11 +9,13 @@ function App() {
 
   return (
     <>
+    <div>
       <Navbar />
       <Hero />
       <ProductsServices />
       <CallToAction />
       <Footer />
+      </div>
     </>
   )
 }

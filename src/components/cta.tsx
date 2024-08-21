@@ -4,7 +4,7 @@ const CallToAction: React.FC = () => {
   return (
     <div className="bg-indigo-600 py-16 px-4 md:px-8 lg:px-16 text-white text-center">
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-        Ready to Take Your Website to the Next Level?
+        Ready to Take Your Business to the Next Level?
       </h2>
       <p className="text-lg md:text-xl mb-8">
         Whether you need a new website, a redesign, or a custom web application, our team is here to help you achieve your goals.

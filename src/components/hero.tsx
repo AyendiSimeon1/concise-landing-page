@@ -7,10 +7,11 @@ const Hero: React.FC = () => {
       <div className="flex flex-col md:flex-row items-start">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-navy-900 mb-6 leading-tight">
-            Improve<br />your<br />skills with<br />oopx
+          Transform Your Business <br /> with  Cutting-Edge <br /> Web Design and Development
+          
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8">
-            Upgrade to a paid Premium plan and get a<br />premium course creation bundle
+            See how we help businesses like yours grow through tailored web solutions, stunning designs, and innovative technology.
           </p>
           <div className="flex space-x-4">
             <motion.button
@@ -47,29 +48,8 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="mt-16 flex justify-start items-center space-x-4">
-        <img src="/path-to-udacity-logo.png" alt="Udacity" className="h-8" />
-        <img src="/path-to-coursera-logo.png" alt="Coursera" className="h-8" />
-        <img src="/path-to-skillshare-logo.png" alt="Skillshare" className="h-8" />
-        <img src="/path-to-udemy-logo.png" alt="Udemy" className="h-8" />
-      </div>
-      <div className="mt-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">8 Must-Have Soft Skills</h2>
-        <p className="text-xl md:text-2xl text-gray-600">
-          You Likely Already Have At Least A Few Of These Skills Under<br />
-          Your Belt, But There's Always Room For Growth.
-        </p>
-      </div>
-      <div className="mt-12 bg-indigo-700 rounded-lg p-6 md:p-10 flex items-start">
-        <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mr-10">
-          <div className="w-28 h-28 border-4 border-indigo-500 rounded-full flex items-center justify-center">
-            <span className="text-indigo-700 font-bold text-xl">SKILL</span>
-          </div>
-        </div>
-        <div className="text-white">
-          <h3 className="text-3xl md:text-4xl font-semibold">The easiest first step? Work on your soft skills.</h3>
-        </div>
-      </div>
+  
+  
     </div>
   );
 };

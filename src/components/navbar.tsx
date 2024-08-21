@@ -20,8 +20,7 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex items-center space-x-8">
         <NavItem text="Templates" />
-        <NavItem text="Success" />
-        <NavItem text="Categories" />
+        <NavItem text="About Us" />
         <NavItem text="Pricing" />
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -30,7 +29,7 @@ const Navbar: React.FC = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {isHovered ? "Let's go!" : "Let's do it"}
+          {isHovered ? "Let's go!" : "Request A Quote"}
         </motion.button>
       </div>
     </nav>
