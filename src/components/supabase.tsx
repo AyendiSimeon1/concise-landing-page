@@ -1,21 +1,29 @@
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../utils/supabase'
+import supabase from '../utils/supabase'
+
+interface Todo {
+    name: String
+
+}
 
 function Page() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState<Todo>([])
 
-  useEffect(() => {
-    function getTodos() {
-      const { data: todos } = await supabase.from('todos').select()
-
-      if (todos.length > 1) {
-        setTodos(todos)
-      }
-    }
-
-    getTodos()
-  }, [])
+  const Todo = async () => {
+    useEffect(() => {
+        async function getTodos() {
+          const { data: todos } = await supabase.from('todos').select()
+    
+          if (todos.length > 1) {
+            setTodos(todos)
+          }
+        }
+    
+        getTodos()
+      }, [])
+  };
+  Todo();
 
   return (
     <div>
