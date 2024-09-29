@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+// import myImage from './growth.jpg';
 
 const Hero: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-navy-900 mb-6 leading-tight">
               Transform Your Business <br /> with  Cutting-Edge <br /> Web Design and Development
             </h1>
-            <Link to="/request-quote">Go to Request Quote Page</Link>
+           
 
             <p className="text-lg md:text-xl text-gray-600 mb-8">
               See how we help businesses like yours grow through tailored web solutions, stunning designs, and innovative technology.
@@ -34,24 +34,8 @@ const Hero: React.FC = () => {
               </motion.button>
             </div>
           </div>
-         
-          <div className="md:w-1/2 relative">
-            <div className="grid grid-cols-3 gap-3">
-              {[...Array(9)].map((_, index) => (
-                <motion.div
-                  key={index}
-                  className={`w-24 h-24 md:w-28 md:h-28 rounded-full ${getRandomColor()}`}
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {index % 3 === 0 && (
-                    <img src={`https://randomuser.me/api/portraits/men/${index + 1}.jpg`} alt="User" className="w-full h-full object-cover rounded-full" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
+ 
+          {/* <img src={myImage} alt="Description" /> */}
         </div>
       </div>
 
@@ -59,9 +43,5 @@ const Hero: React.FC = () => {
   );
 };
 
-const getRandomColor = () => {
-  const colors = ['bg-blue-500', 'bg-yellow-500', 'bg-indigo-500', 'bg-cyan-500', 'bg-navy-900'];
-  return colors[Math.floor(Math.random() * colors.length)];
-};
 
 export default Hero;

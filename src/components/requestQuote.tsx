@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { createClient }  from '@supabase/supabase-js';
+import {  useNavigate } from 'react-router-dom';
+
+
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const RequestQuoteForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +16,10 @@ const RequestQuoteForm: React.FC = () => {
     projectName: '',
     description: '',
   });
+  const [isSubmittinng, setIsSubmitting] = useState(false);
+  const [ submitMessage, setSubmitMessage] = useState('');
+  const navigate = useNavigate();
+  const [notification, setNotification] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -17,14 +29,48 @@ const RequestQuoteForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const { data, error } = await supabase
+      .from('quote_requests') // Make sure this matches your table name exactly
+      .insert([formData]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      console.log('Inserted data:', data);
+      setNotification('Your quote request has been submitted successfully. Redirecting to home page...');
+
+
+      setSubmitMessage('Message submitted successfully');
+      setFormData({ name: '', email: '', projectName: '', description: ''});
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    } catch (error) {
+        console.error('There was an error submitting form')
+    } finally {
+        setIsSubmitting(false);
+    }
+
   };
+  const Alert: React.FC<{ message: string }> = ({ message }) => (
+    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+      <strong className="font-bold">Success!</strong>
+      <span className="block sm:inline"> {message}</span>
+    </div>
+  );
 
   return (
     <div className="bg-white py-12 md:py-20 w-full px-4 md:px-6 lg:px-8">
+      {notification && <Alert message={notification} />}
       <div className="max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-8 leading-tight">
           Request a Quote
@@ -88,10 +134,14 @@ const RequestQuoteForm: React.FC = () => {
               type="submit"
               className="w-full px-8 py-4 bg-navy-900 text-white text-lg font-semibold rounded-md hover:bg-navy-800 transition-colors duration-200"
             >
-              Submit Request
+              {isSubmittinng ? 'Submittig...' : 'Submit Request'}
+              
             </motion.button>
           </div>
         </form>
+        {submitMessage && (
+          <p className='mt-4 text-lg font-medium text-green-600'>{submitMessage}</p>
+        )}
       </div>
     </div>
   );

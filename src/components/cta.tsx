@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CallToAction: React.FC = () => {
   return (
@@ -10,14 +11,15 @@ const CallToAction: React.FC = () => {
         Whether you need a new website, a redesign, or a custom web application, our team is here to help you achieve your goals.
       </p>
       <div className="flex justify-center space-x-4">
-        <a
-          href="/contact"
+        <Link to='https://wa.me/2349075754477'>
+        <p
           className="bg-white text-indigo-600 font-semibold py-4 px-8 rounded-md hover:bg-gray-100 transition-colors duration-200"
         >
           Contact Us
-        </a>
+          </p>
+        </Link>
         <a
-          href="/start-project"
+          href="/request-quote"
           className="bg-indigo-800 text-white font-semibold py-4 px-8 rounded-md hover:bg-indigo-700 transition-colors duration-200"
         >
           Start a Project
