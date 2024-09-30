@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
             <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
-        <span className="text-xl font-bold text-navy-900">Concise</span>
+        <span className="text-xl font-bold text-navy-900">Consize</span>
       </div>
       <div className="flex items-center space-x-8">
         <Link to='/request-quote'>
